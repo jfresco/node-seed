@@ -1,0 +1,9 @@
+{
+  "ecmaFeatures": {
+    "arrowFunctions": true
+  },
+  "env": {
+    "node": true,
+    "mocha": true
+  }
+}

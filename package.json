@@ -1,0 +1,55 @@
+{
+  "name": "node-seed",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=node-seed* NODE_PATH=. node ./src/server",
+    "debug": "DEBUG=node-seed* NODE_PATH=. node debug ./src/server",
+    "mon": "DEBUG=node-seed* NODE_PATH=. nodemon ./src/server",
+    "build": "npm run mkdir && npm run js && npm run css",
+    "watch": "npm run mkdir && trap 'kill %1; kill %2' SIGINT && watchify -v -t jadeify ./src/client -o ./dist/app.js & echo `pwd` && wr --verbose \"npm run css\" `find ./src/client -name *.styl`",
+    "css": "stylus < ./src/client/index.styl > ./dist/app.css",
+    "js": "browserify -t jadeify ./src/client > ./dist/app.js",
+    "mkdir": "mkdir -p dist",
+    "clean": "rm -rf dist node_modules",
+    "test": "npm run lint && mocha",
+    "lint": "npm run lint-server && npm run lint-client && npm run lint-test",
+    "lint-server": "eslint ./src/server/**/*.js",
+    "lint-client": "eslint ./src/client/**/*.js",
+    "lint-test": "eslint ./test/**/*.js",
+    "postinstall": "npm run lint && npm run build"
+  },
+  "keywords": [],
+  "author": "José Fresco <josemariafresco@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^11.2.0",
+    "eslint": "^1.7.3",
+    "jade": "^1.11.0",
+    "jade-lint": "^1.2.13",
+    "jadeify": "^4.4.0",
+    "mocha": "^2.3.3",
+    "nodemon": "^1.8.1",
+    "page": "^1.6.3",
+    "stylint": "^1.2.5",
+    "stylus": "^0.52.4",
+    "watchify": "^3.6.0",
+    "wr": "^1.3.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "cookie-parser": "^1.4.0",
+    "debug": "^2.2.0",
+    "domify": "^1.4.0",
+    "express": "^4.13.3",
+    "inherits": "^2.0.1",
+    "mongoose": "^4.1.10",
+    "passport": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "superagent": "^1.4.0"
+  }
+}

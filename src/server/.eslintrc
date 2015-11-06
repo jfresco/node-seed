@@ -1,0 +1,14 @@
+{
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "blockBindings": true
+  },
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "prefer-const": 1,
+    "no-const-assign": 2,
+    "prefer-arrow-callback": 2
+  }
+}
